@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="inter.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-qVm+ADRxKOQQ+SzW8ZvzmsCxo+GLr2HrGtW8yvJ9gTJJT68jsC1okK76lRRo0DQo0ITb/khxpgoFXT1K9s3s7w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- route -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
+    <!-- buffer -->
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.3.0"></script>
+    <!-- waether condition -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- leaflet geolocation css -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <title>Interactive Map</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+
+       
+    </style>
+</head>
+
+<body>
+
+
+    <div class="head">
+
+
+
+        <!-- <button id="myButton" class="dir">Click me</button> -->
+
+        <button id="one"> <img src="natural.png" class="on"> Natural Attraction</button>
+        <button id="two"><img src="view.png" class="on">View Point</button>
+        <button id="three"><img src="temple.png" class="on">Historic Place</button>
+
+        <button id="four"><img src="hotel.png" class="on">Hotels</button>
+        <button id="five"><img src="atm.png" class="on">ATM</button>
+        <button id="six"><img src="mueseum.png" class="on">Meusem</button>
+
+    </div>
+    <div id="coordinates"></div>
+
+    <div id="temperature"> </div>
+
+    <button id="myButton"><img src="direction.png" class="dir"></button>
+    <button id="buffer-button"><img src="bbb.png" class="buf"></button>
+    <div id="container1" style="display: none;">
+        <div class="heading">
+            <h2 class="white">Natural Attraction</h2>
+            <ul class="nalist">
+
+            </ul>
+        </div>
+    </div>
+    <div>
+        <button id="container1img" style="display: none; "><img src="gallery.png" class="gal">
+
+    </div>
+    </button>
+
+
+
+
+    <div id="container1imgna" style="display: none;">
+
+        <img src="nature/a.jpg" alt="shiva" class="a" ;>
+        <div class="tal">
+            <h3>Phewa Lake</h3>
+
+        </div>
+
+
+
+        <img src="nature/b.jpg" alt="shiva" class="a" ;>
+        <div class="tal">
+            <h3>Davis Fall</h3>
+
+        </div>
+        <img src="nature/c.jpg" alt="shiva" class="a" ;>
+        <div class="tal">
+            <h3>Pokhara City</h3>
+
+        </div>
+        <img src="nature/d.jpg" alt="shiva" class="a" ;>
+        <div class="tal">
+            <h3>Gorkha Muesum</h3>
+
+        </div>
+        <img src="nature/e.jpg" alt="shiva" class="a" ;>
+        <div class="tal">
+            <h3>Shanti Stupa</h3>
+
+        </div>
+
+
+
+        <li><a href="Tourism.html">
+                <h4>--See More--</h4>
+
+            </a></li>
+
+
+    </div>
+
+
+    </div>
+    </div>
+
+    <div id="container2" style="display: none;">
+        <div class="heading">
+            <h2 class="white">View Points</h2>
+            <ul class="vplist">
+
+            </ul>
+        </div>
+    </div>
+    <div>
+        <button id="container2img" style="display: none;"><img src="gallery.png" class="gal"></button>
+
+
+
+        <div id="container2imgvp" style="display: none;">
+
+            <img src="viewpoint/a.jpg" alt="shiva" class="a" ;>
+            <div class="tal">
+                <h3>Begnas Lake</h3>
+
+            </div>
+
+
+
+            <img src="viewpoint/b.jpg" alt="shiva" class="a" ;>
+            <div class="tal">
+                <h3>Sarankot</h3>
+
+            </div>
+            <img src="viewpoint/c.jpg" alt="shiva" class="a" ;>
+            <div class="tal">
+                <h3>Pokhara city</h3>
+
+            </div>
+            <img src="viewpoint/d.jpeg" alt="shiva" class="a" ;>
+            <div class="tal">
+                <h3>Kahu Dada</h3>
+
+            </div>
+            <img src="viewpoint/e.jpg" alt="shiva" class="a" ;>
+            <div class="tal">
+                <h3>Machhaphuchare Mountain</h3>
+
+            </div>
+
+
+
+            <li><a href="Tourism.html">
+                    <h4>--See More--</h4>
+
+                </a></li>
+
+
+        </div>
+
+
+
+    </div>
+    </div>
+
+    <div id="container4" style="display: none;">
+        <div class="heading">
+            <h2 class="white">Hotels</h2>
+            <ul class="holist">
+
+            </ul>
+        </div>
+    </div>
+    <div>
+        <button id="container4img" style="display: none;"><img src="gallery.png" class="gal"></button>
+
+
+
+        <div id="container4imgho" style="display: none;">
+
+
+
+
+        </div>
+    </div>
+
+    <div id="container5" style="display: none;">
+        <div class="heading">
+            <h2 class="white">ATM</h2>
+            <ul class="atlist">
+
+            </ul>
+        </div>
+    </div>
+    <div>
+        <button id="container5img" style="display: none;"><img src="gallery.png" class="gal"></button>
+
+
+
+        <div id="container5imgat" style="display: none;">
+
+
+
+
+        </div>
+    </div>
+
+
+    <div id="container" style="display: none;">
+        <div class="heading">
+            <h2 class="white">Temples</h2>
+            <ul class="list">
+
+            </ul>
+        </div>
+    </div>
+    <div>
+        <button id="container3img" style="display: none;"><img src="gallery.png" class="gal"></button>
+
+
+
+        <div id="container3imgtem" style="display: none;">
+
+           
+
+
+
+            <img src="slide/a.jpg" alt="shiva" class="a" ;>
+            <div class="tal">
+                <h3>Bhadrakali Teple</h3>
+
+            </div>
+
+
+
+            <img src="slide/b.jpg" alt="shiva" class="a" ;>
+            <div class="tal">
+                <h3>Pumdikot</h3>
+
+            </div>
+            <img src="slide/c.jpg" alt="shiva" class="a" ;>
+            <div class="tal">
+                <h3>Brindabasini Mandir</h3>
+
+            </div>
+            <img src="slide/k.jpeg" alt="shiva" class="a" ;>
+            <div class="tal">
+                <h3>Matepani Gumba</h3>
+
+            </div>
+            <img src="slide/f.jpg" alt="shiva" class="a" ;>
+            <div class="tal">
+                <h3>Santi Stupa</h3>
+
+            </div>
+
+
+
+            <li><a href="Tourism.html">
+                    <h4>--See More--</h4>
+
+                </a></li>
+
+
+        </div>
+    </div>
+
+    <div id="container6" style="display: none;">
+        <div class="heading">
+            <h2 class="white">Museum</h2>
+            <ul class="mulist">
+
+            </ul>
+        </div>
+    </div>
+    <div>
+        <button id="container6img" style="display: none;"> <img src="gallery.png" class="gal"></button>
+
+
+
+        <div id="container6imgmu" style="display: none;">
+
+            <img src="meusum/a.jpg" alt="shiva" class="a" ;>
+            <div class="tall">
+                <h3>International Meusum</h3>
+
+            </div>
+
+
+
+            <img src="meusum/b.jpg" alt="shiva" class="a" ;>
+            <div class="tall">
+                <h3>Regional Meusum</h3>
+
+            </div>
+            <img src="meuseum/c.jpg" alt="shiva" class="a" ;>
+            <div class="tall">
+                <h3>Gorkha Meusum</h3>
+
+            </div>
+            <!-- <img src="viewpoint/d.jpeg" alt="shiva" class="a" ;>
+            <div class="tal">
+                <h3>Pumdikot</h3>
+                
+            </div>
+            <img src="viewpoint/e.jpg" alt="shiva" class="a" ;>
+            <div class="tal">
+                <h3>Pumdikot</h3>
+                
+            </div> -->
+
+
+
+            <li><a href="Tourism.html">
+                    <h4>--See More--</h4>
+
+                </a></li>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+    <div id="map"></div>
+
+
+</body>
+
+</html>
+
+<!--  leaflet js -->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+<!-- routing -->
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+<!-- geolocation -->
+<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.js"
+    charset="utf-8"></script>
+
+<!-- citylots data  -->
+<script src="./mandir.js"></script>
+<script src="./his.js"></script>
+
+<script src="./Museum.js"></script>
+<script src="./view.js"></script>
+<script src="./ATM.js"></script>
+<script src="./hotel.js"></script>
+<script src="./nature.js"></script>
+<script>
+
+
+
+
+
+    var map = L.map('map').setView([28.237987, 83.995588], 13);
+    var titleUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
+    var attribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
+    var tiles = L.tileLayer(titleUrl, { attribution });
+    tiles.addTo(map);
+    // for buffer
+    //     document.getElementById("buffer-button").addEventListener("click", createBuffer);
+
+    //     function createBuffer() {
+    //   var point = L.latLng(28.23,83.99); 
+    //   var buffer = turf.buffer(point, 5, {units: 'kilometers'}); 
+    //   L.geoJSON(buffer).addTo(map);
+    //     }
+
+
+    // document.getElementById("buffer-button").addEventListener("click", createBuffer);
+
+    var bufferLayer;
+    var bufferButton = document.getElementById('buffer-button');
+    var bufferRunning = false;
+    var clickPoint;
+    var clickMarker;
+
+    function toggleBuffer() {
+        if (bufferRunning) {
+            clearInterval(bufferInterval);
+            map.off('click', addBuffer);
+            map.off('mousemove', updateBuffer);
+            bufferLayer.clearLayers();
+            clickMarker.removeFrom(map);
+            console.log('Buffer stopped.');
+            bufferButton.innerHTML = '<img src="bbb.png" class="buf">';
+            bufferRunning = false;
+        } else {
+            console.log('Buffer started.');
+            // bufferButton.innerHTML = <img src="bbb.png" class="buf">;
+            bufferRunning = true;
+            map.on('click', addBuffer);
+            // map.on('mousemove', updateBuffer);
+        }
+    }
+
+    function addBuffer(e) {
+        clickPoint = e.latlng;
+        clickMarker = L.marker(clickPoint).addTo(map);
+        updateBuffer(e);
+        bufferInterval = setInterval(updateBuffer, 1000);
+        map.off('click', addBuffer);
+    }
+
+    function updateBuffer(e) {
+        if (bufferLayer) {
+            bufferLayer.clearLayers();
+        }
+        var buffer = turf.buffer(turf.point([clickPoint.lng, clickPoint.lat]), 500, { units: 'meters' });
+        bufferLayer = L.geoJSON(buffer).addTo(map);
+    }
+
+    bufferButton.addEventListener('click', toggleBuffer);
+
+    // function createBuffer() {
+    //     map.on('click', function(e) {
+
+    //     var clickPoint = e.latlng;
+    //     var marker = L.marker(clickPoint).addTo(map);
+
+    //     var buffer = turf.buffer(turf.point([clickPoint.lng, clickPoint.lat]), 500, {units: 'meters'});
+
+
+    //     var bufferLayer = L.geoJSON(buffer).addTo(map);
+    // });
+    // }
+    // for direction
+    document.getElementById("myButton").addEventListener("click", function () {
+        myFunction();
+    });
+
+    function myFunction() {
+        console.log("Button was clicked!");
+
+
+        if (!navigator.geolocation) {
+            console.log("dont support geolocation")
+        }
+        else {
+            setInterval(() => {
+                navigator.geolocation.getCurrentPosition(getPosition)
+            }, 1000);
+
+        }
+        var marker, circle;
+        function getPosition(position) {
+            // console.log(position)
+            var lat = position.coords.latitude
+            var long = position.coords.longitude
+            var accuracy = position.coords.accuracy
+            if (marker) {
+                map.removeLayer(marker)
+            }
+            // if(circle){
+            //     map.removeLayer(circle)
+            // }
+            marker = L.marker([lat, long])
+            circle = L.circle([lat, long], { radius: accuracy })
+            var featureGroup = L.featureGroup([marker]).addTo(map)
+            // map.fitBounds(featureGroup.getBounds())
+
+            console.log("your coordinate is: lat:" + lat + "long:" + long + " Accuracy:" + accuracy)
+
+            map.on('click', function (e) {
+                console.log(e)
+                var secondmarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+                L.Routing.control({
+                    waypoints: [
+                        L.latLng(lat, long),
+                        L.latLng(e.latlng.lat, e.latlng.lng)
+                    ]
+
+                }).addTo(map);
+
+                L.Control.geocoder().addTo(map);
+                L.Control.locate().addTo(map);
+            })
+        }
+    }
+
+
+    // temple
+    var geojson;
+
+
+
+
+    document.getElementById("three").addEventListener("click", function () {
+        if (geojson) {
+            map.removeLayer(geojson);
+
+            geojson = null;
+        } else {
+            geojson = L.geoJSON(templeList, {
+
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, { icon: cusomIcon });
+                }
+            }).bindPopup(function (layer) {
+                return layer.feature.properties.Name
+                return layer.feature.geometry.coordinates
+            }).addTo(map);
+        }
+    });
+    var cusomIcon = L.icon({
+        iconUrl: 'temple.png',
+        iconSize: [20, 20],
+
+    });
+
+
+    // natural attraction
+    var natural;
+
+
+
+
+    document.getElementById("one").addEventListener("click", function () {
+        if (natural) {
+            map.removeLayer(natural);
+
+            natural = null;
+        } else {
+            natural = L.geoJSON(nature, {
+
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, { icon: cutomIcon });
+                }
+            }).bindPopup(function (layer) {
+                return layer.feature.properties.name
+                return layer.feature.geometry.coordinates
+            }).addTo(map);
+        }
+    });
+    var cutomIcon = L.icon({
+        iconUrl: 'point.png',
+        iconSize: [30, 30],
+
+    });
+
+    // view point
+    var view;
+
+
+
+
+    document.getElementById("two").addEventListener("click", function () {
+        if (view) {
+            map.removeLayer(view);
+
+            view = null;
+        } else {
+            view = L.geoJSON(vie, {
+
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, { icon: cstomIcon });
+                }
+            }).bindPopup(function (layer) {
+                return layer.feature.properties.Name
+                return layer.feature.geometry.coordinates
+            }).addTo(map);
+        }
+    });
+    var cstomIcon = L.icon({
+        iconUrl: 'view.png',
+        iconSize: [30, 30],
+
+    });
+
+    // hotels
+    var hotel;
+
+
+
+
+    document.getElementById("four").addEventListener("click", function () {
+        if (hotel) {
+            map.removeLayer(hotel);
+
+            hotel = null;
+        } else {
+            hotel = L.geoJSON(Hotel, {
+
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, { icon: ustomIcon });
+                }
+            }).bindPopup(function (layer) {
+                return layer.feature.properties.name
+                return layer.feature.geometry.coordinates
+                return layer.feature.properties.phone
+            }).addTo(map);
+        }
+    });
+    var ustomIcon = L.icon({
+        iconUrl: 'hotel.png',
+        iconSize: [20, 20],
+
+    });
+
+
+    // ATM
+    var attm;
+
+
+
+
+    document.getElementById("five").addEventListener("click", function () {
+        if (attm) {
+            map.removeLayer(attm);
+
+            attm = null;
+        } else {
+            attm = L.geoJSON(Atm, {
+
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, { icon: customIcon });
+                }
+            }).bindPopup(function (layer) {
+                return layer.feature.properties.name
+                return layer.feature.geometry.coordinates
+            }).addTo(map);
+        }
+    });
+    var customIcon = L.icon({
+        iconUrl: 'atm.png',
+        iconSize: [20, 20],
+
+    });
+
+
+    //Museum
+
+    var meseum;
+
+
+
+
+
+    document.getElementById("six").addEventListener("click", function () {
+        if (meseum) {
+            map.removeLayer(meseum);
+
+            meseum = null;
+        } else {
+            meseum = L.geoJSON(museum, {
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, { icon: custmIcon });
+                }
+            }).bindPopup(function (layer) {
+                return layer.feature.properties.Name
+                return layer.feature.geometry.coordinates
+            }).addTo(map);
+        }
+    });
+    var custmIcon = L.icon({
+        iconUrl: 'mueseum.png',
+        iconSize: [20, 20],
+
+    });
+
+
+
+
+    // geolocarion
+
+    L.control.locate().addTo(map);
+
+
+    // baselayer
+    var OpenStreetMap_Mapnik = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var StamenTerrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
+        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        subdomains: 'abcd',
+        minZoom: 0,
+        maxZoom: 18,
+        ext: 'png'
+    });
+
+    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+    var basemap = {
+        'OSM': OpenStreetMap_Mapnik,
+        'Terrain': StamenTerrain,
+        'World Map': Esri_WorldImagery
+
+    }
+    L.control.layers(basemap).addTo(map);
+
+    //   natural attraction
+
+    document.getElementById("one").addEventListener("click", function () {
+        var container1 = document.getElementById("container1");
+        if (container1.style.display === "none") {
+            container1.style.display = "block";
+        } else {
+            container1.style.display = "none";
+        }
+
+        function generatenaList() {
+            const ul = document.querySelector('.nalist');
+            nature.forEach((natural) => {
+                const li = document.createElement('li')
+                const div = document.createElement('div')
+                const a = document.createElement('a')
+                const p = document.createElement('p')
+
+
+                a.addEventListener('click', () => {
+                    flytonatural(natural);
+                });
+
+
+                div.classList.add('natural-item');
+                a.innerText = natural.properties.name;
+                a.href = "#";
+                p.innerText = natural.geometry.coordinates;
+
+                div.appendChild(a);
+                div.appendChild(p);
+                li.appendChild(div);
+                ul.appendChild(li);
+            })
+
+        }
+        generatenaList();
+    });
+    // natural attraction photo
+    document.getElementById("one").addEventListener("click", function () {
+
+        var container1img = document.getElementById("container1img");
+        if (container1img.style.display === "none") {
+            container1img.style.display = "block";
+        } else {
+            container1img.style.display = "none";
+        }
+    });
+
+    // natural single photo
+    document.getElementById("container1img").addEventListener("click", function () {
+        var container1imgna = document.getElementById("container1imgna");
+        if (container1imgna.style.display === "none") {
+            container1imgna.style.display = "block";
+
+        } else {
+            container1imgna.style.display = "none";
+        }
+    });
+
+
+    //   view
+
+    document.getElementById("two").addEventListener("click", function () {
+        var container2 = document.getElementById("container2");
+        if (container2.style.display === "none") {
+            container2.style.display = "block";
+        } else {
+            container2.style.display = "none";
+        }
+
+        function generatevpList() {
+            const ul = document.querySelector('.vplist');
+            vie.forEach((view) => {
+                const li = document.createElement('li')
+                const div = document.createElement('div')
+                const a = document.createElement('a')
+                const p = document.createElement('p')
+
+
+                a.addEventListener('click', () => {
+                    flytoview(view);
+                });
+
+
+                div.classList.add('view-item');
+                a.innerText = view.properties.Name;
+                a.href = "#";
+                p.innerText = view.geometry.coordinates;
+
+                div.appendChild(a);
+                div.appendChild(p);
+                li.appendChild(div);
+                ul.appendChild(li);
+            })
+
+        }
+        generatevpList();
+    });
+    // view photo
+    document.getElementById("two").addEventListener("click", function () {
+
+        var container2img = document.getElementById("container2img");
+        if (container2img.style.display === "none") {
+            container2img.style.display = "block";
+        } else {
+            container2img.style.display = "none";
+        }
+    });
+
+    // view single photo
+    document.getElementById("container2img").addEventListener("click", function () {
+        var container2imgvp = document.getElementById("container2imgvp");
+        if (container2imgvp.style.display === "none") {
+            container2imgvp.style.display = "block";
+        } else {
+            container2imgvp.style.display = "none";
+        }
+    });
+
+
+    //   Temple
+
+    document.getElementById("three").addEventListener("click", function () {
+        var container = document.getElementById("container");
+        if (container.style.display === "none") {
+            container.style.display = "block";
+        } else {
+            container.style.display = "none";
+        }
+
+        function generateList() {
+            const ul = document.querySelector('.list');
+            templeList.forEach((shop) => {
+                const li = document.createElement('li')
+                const div = document.createElement('div')
+                const a = document.createElement('a')
+                const p = document.createElement('p')
+
+
+                a.addEventListener('click', () => {
+                    flytotemple(shop);
+                });
+
+
+                div.classList.add('temple-item');
+                a.innerText = shop.properties.Name;
+                a.href = "#";
+                p.innerText = shop.geometry.coordinates;
+
+                div.appendChild(a);
+                div.appendChild(p);
+                li.appendChild(div);
+                ul.appendChild(li);
+            })
+
+        }
+        generateList();
+    });
+    // temples photo
+    document.getElementById("three").addEventListener("click", function () {
+
+        var container6img = document.getElementById("container3img");
+        if (container6img.style.display === "none") {
+            container6img.style.display = "block";
+        } else {
+            container6img.style.display = "none";
+        }
+    });
+
+    // temple single photo
+    document.getElementById("container3img").addEventListener("click", function () {
+        var container6imgmu = document.getElementById("container3imgtem");
+        if (container6imgmu.style.display === "none") {
+            container6imgmu.style.display = "block";
+        } else {
+            container6imgmu.style.display = "none";
+        }
+    });
+
+
+
+    //   hotel
+
+    document.getElementById("four").addEventListener("click", function () {
+        var container4 = document.getElementById("container4");
+        if (container4.style.display === "none") {
+            container4.style.display = "block";
+        } else {
+            container4.style.display = "none";
+        }
+
+        function generatehoList() {
+            const ul = document.querySelector('.holist');
+            Hotel.forEach((hotel) => {
+                const li = document.createElement('li')
+                const div = document.createElement('div')
+                const a = document.createElement('a')
+                const p = document.createElement('p')
+
+
+                a.addEventListener('click', () => {
+                    flytohotel(hotel);
+                });
+
+
+                div.classList.add('hotel-item');
+                a.innerText = hotel.properties.name;
+
+                a.href = "#";
+                p.innerText = hotel.properties.phone;
+                p.innerText = hotel.geometry.coordinates;
+
+                div.appendChild(a);
+                div.appendChild(p);
+                li.appendChild(div);
+                ul.appendChild(li);
+            })
+
+        }
+        generatehoList();
+    });
+    // HOTEL photo
+    document.getElementById("four").addEventListener("click", function () {
+
+        var container4img = document.getElementById("container4img");
+        if (container4img.style.display === "none") {
+            container4img.style.display = "block";
+        } else {
+            container4img.style.display = "none";
+        }
+    });
+
+    // HOTEL single photo
+    document.getElementById("container4img").addEventListener("click", function () {
+        var container4imgho = document.getElementById("container4imgho");
+        if (container4imgho.style.display === "none") {
+            container4imgho.style.display = "block";
+        } else {
+            container4imgho.style.display = "none";
+        }
+    });
+
+
+    //   atm
+
+    document.getElementById("five").addEventListener("click", function () {
+        var container5 = document.getElementById("container5");
+        if (container5.style.display === "none") {
+            container5.style.display = "block";
+        } else {
+            container5.style.display = "none";
+        }
+        function generatemeatList() {
+            const ul = document.querySelector('.atlist');
+            Atm.forEach((atm) => {
+                const li = document.createElement('li')
+                const div = document.createElement('div')
+                const a = document.createElement('a')
+                const p = document.createElement('p')
+
+
+                a.addEventListener('click', () => {
+                    flytoatm(atm);
+                });
+
+
+                div.classList.add('atm-item');
+                a.innerText = atm.properties.name;
+                a.href = "#";
+                p.innerText = atm.geometry.coordinates;
+
+
+                div.appendChild(a);
+                div.appendChild(p);
+                li.appendChild(div);
+                ul.appendChild(li);
+            })
+
+        }
+        generatemeatList();
+    });
+
+    // atm photo
+    document.getElementById("five").addEventListener("click", function () {
+        var container5img = document.getElementById("container5img");
+        if (container5img.style.display === "none") {
+            container5img.style.display = "block";
+        } else {
+            container5img.style.display = "none";
+        }
+    });
+
+    // museum single photo
+    document.getElementById("container5img").addEventListener("click", function () {
+        var container5imgat = document.getElementById("container5imgat");
+        if (container5imgat.style.display === "none") {
+            container5imgat.style.display = "block";
+        } else {
+            container5imgat.style.display = "none";
+        }
+    });
+
+    //   Museum
+
+    document.getElementById("six").addEventListener("click", function () {
+        var container6 = document.getElementById("container6");
+        if (container6.style.display === "none") {
+            container6.style.display = "block";
+        } else {
+            container6.style.display = "none";
+        }
+        function generatemeList() {
+            const ul = document.querySelector('.mulist');
+            museum.forEach((mu) => {
+                const li = document.createElement('li')
+                const div = document.createElement('div')
+                const a = document.createElement('a')
+                const p = document.createElement('p')
+
+
+                a.addEventListener('click', () => {
+                    flytomuseum(mu);
+                });
+
+
+                div.classList.add('museum-item');
+                a.innerText = mu.properties.Name;
+                a.href = "#";
+                p.innerText = mu.geometry.coordinates;
+
+
+                div.appendChild(a);
+                div.appendChild(p);
+                li.appendChild(div);
+                ul.appendChild(li);
+            })
+
+        }
+        generatemeList();
+    });
+
+    // museum photo
+    document.getElementById("six").addEventListener("click", function () {
+        var container6img = document.getElementById("container6img");
+        if (container6img.style.display === "none") {
+            container6img.style.display = "block";
+        } else {
+            container6img.style.display = "none";
+        }
+    });
+
+    // museum single photo
+    document.getElementById("container6img").addEventListener("click", function () {
+        var container6imgmu = document.getElementById("container6imgmu");
+        if (container6imgmu.style.display === "none") {
+            container6imgmu.style.display = "block";
+        } else {
+            container6imgmu.style.display = "none";
+        }
+    });
+
+
+    // viewpoint
+    function flytoview(store) {
+        map.flyTo([store.geometry.coordinates[1], store.geometry.coordinates[0]], 18)
+
+    }
+
+    // temple
+    function flytotemple(store) {
+        map.flyTo([store.geometry.coordinates[1], store.geometry.coordinates[0]], 18)
+
+    }
+
+
+
+    // museum
+
+    function flytomuseum(store) {
+        map.flyTo([store.geometry.coordinates[1], store.geometry.coordinates[0]], 18)
+
+    }
+
+    // natural
+
+    function flytonatural(store) {
+        map.flyTo([store.geometry.coordinates[1], store.geometry.coordinates[0]], 18)
+
+    }
+
+    // atm
+
+    function flytoatm(store) {
+        map.flyTo([store.geometry.coordinates[1], store.geometry.coordinates[0]], 18)
+
+    }
+
+    // hotel
+
+    function flytohotel(store) {
+        map.flyTo([store.geometry.coordinates[1], store.geometry.coordinates[0]], 18)
+
+    }
+
+
+    // temperature
+    var apikey = 'aaf45394eca27b2ad685219ad3a074ea';
+    var city = 'Pokhara';
+
+    $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apikey, function (data) {
+        var temp = (data.main.temp - 273.15).toFixed(1); // convert temperature to Celsius
+        var weather = data.weather[0].main;
+        var wind = data.wind.speed;
+
+        var html = '<p>Temperature: ' + temp + '°C</p>' +
+            '<p>Weather: ' + weather + '</p>' +
+            '<p>Wind Speed: ' + wind + ' m/s</p>';
+
+        $('#temperature').html(html);
+    });
+
+
+
+    // Add a click event listener to the map
+    map.on('click', function (e) {
+
+
+        // Toggle the visibility of the 'myDiv' element
+        var myDiv = document.getElementById('coordinates');
+        if (myDiv.style.display === 'block') {
+            myDiv.style.display = 'none';
+        } else {
+            myDiv.style.display = 'block';
+        }
+
+        var coordinates = document.getElementById('coordinates');
+        coordinates.innerHTML = 'Latitude: ' + e.latlng.lat.toFixed(6) + '<br>Longitude: ' + e.latlng.lng.toFixed(6);
+    });
+
+    var marker = L.marker([e.latlng.lat.toFixed(6), e.latlng.lng.toFixed(6)]).addTo(map);
+
+   
+
+
+
+
+    // Load the GeoJSON data for hotels
+    var Hotel = L.geoJSON(null, {
+        pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, {
+                radius: 5,
+                fillOpacity: 0.8,
+                color: '#ff0000',
+                fillColor: '#ff0000'
+            });
+        }
+    });
+    $.getJSON("Hotel.geojson", function (data) {
+        hotels.addData(data);
+        map.fitBounds(Hotel.getBounds());
+    });
+
+    // Create the heat map layer
+    var heat = L.heatLayer([], {
+        radius: 25,
+        blur: 15,
+        maxZoom: 17
+    }).addTo(map);
+
+    // Update the heat map with the hotel data
+    Hotel.on('data', function (e) {
+        var latlngs = e.layer.getLatLngs();
+        var data = [];
+        for (var i = 0; i < latlngs.length; i++) {
+            data.push([latlngs[i].lat, latlngs[i].lng]);
+        }
+        heat.setLatLngs(data);
+    });
+
+</script>

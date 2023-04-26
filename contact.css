@@ -1,0 +1,457 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* background-color: aqua;  */
+  box-sizing: border-box;
+  font-family: 'poppins', sans-serif;
+  
+}
+
+
+
+
+
+
+
+.container {
+  /* border: 1px solid black; */
+  width: 30vw;
+  /* height:180%; */
+  display: flex;
+  /* background-color:rgba(156, 119, 119, 0); */
+  /* align-items: center;
+    justify-content: center; */
+  /* margin:30px 0px;
+    padding:20px 30px; */
+  /* background: white; */
+  margin: 150px;
+  position: absolute;
+  
+}
+
+.navSecond {
+  display: flex;
+  /* text-align: right;
+    justify-content: right; */
+  /* padding: 10px 340px; */
+  /* margin: 10px 10px; */
+/* border: 1px solid black; */
+  background-color: whitesmoke;
+  position: absolute;
+  margin-left: 630px;
+  top: 60px;
+  width: 55vw;
+
+  z-index: 999;
+  border-radius: 5px;
+  background-color: rgb(253, 250, 250, 0.00005);
+
+}
+
+.sajan {
+  display: flex;
+  width:50vw;
+  /* text-align: right;
+     justify-content: space-between; */
+  /* padding: 10px 300px;
+    background-color: white;
+    position: sticky;
+    top: 70px;
+    width: 50%;
+    z-index: 999; */
+
+}
+
+
+.sajan li {
+  list-style: none;
+  margin-left: 80px;
+  margin: 20px;
+
+  padding: 0 20px;
+  font-size: 18px;
+  font-weight: bold;
+
+
+
+}
+
+.sajan li a {
+  text-decoration: none;
+  color: rgb(33, 33, 33);
+  /* text-align: right; */
+  padding: 30px 10px;
+  /* color:black; */
+  opacity: 100%;
+
+
+}
+
+.sajan li a:hover {
+  color: red;
+  /* letter-spacing: 1px; */
+}
+
+.image {
+  display: flex;
+  width:100%;
+  border:1px solid black;
+}
+
+img.saajan {
+  width: 100%;
+  height: 30%;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+
+  z-index: 999;
+  margin-top: 890px;
+  /* border: 1px solid black; */
+}
+
+
+
+form {
+  border: 1px solid black; 
+  background: rgb(193, 188, 188,0.5);
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  /* padding: 20vh 4wh; */
+  /* height:100%; */
+
+  width: 40vw;
+  margin: 30px 20px;
+  box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.75);
+  /* max-width: 550px; */
+
+}
+
+.heading {
+  padding: 20px 190px;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: normal;
+  color: brown;
+  font-size: 30px;
+}
+
+.nam {
+  padding: 0 220px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+}
+
+
+
+form #name {
+  margin: 20px;
+  padding: 10px 0px;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: 0;
+  border-radius: 10px;
+}
+
+.ema {
+  padding: 0 220px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+}
+
+form #email {
+  margin: 20px;
+  padding: 10px 0px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 10px;
+
+}
+
+form button {
+  padding: 10px;
+  background: rgb(200, 232, 19);
+  font-size: 18px;
+  cursor: pointer;
+  width: 150px;
+  margin: 5px auto;
+  border-radius: 30px;
+  border: 0;
+}
+
+
+.contact {
+  padding: 0 220px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+}
+
+form #phone {
+  border: 0;
+  margin: 20px;
+  padding: 10px 0px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+
+}
+
+
+.pro {
+  padding: 0 220px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+}
+
+form #Message {
+  border: 0;
+  margin: 20px;
+  padding: 10px 0px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+
+}
+
+
+
+/* form{
+    margin: 20px;
+    padding:10px 0px;
+    align-items: center;
+    justify-content: center;
+
+} */
+
+.footer {
+  /* display: flex; */
+  margin: 40px;
+
+}
+
+.symbol {
+  padding: 0 20px;
+}
+
+img.pokhara {
+  height: 20vh;
+  width: 20wh;
+  margin: 0px 30px;
+}
+
+img.pash {
+  height: 20vh;
+  width: 20wh;
+}
+
+.us {
+  /* border: 1px solid black; */
+  display: flex;
+  margin: 10px;
+  /* width: 40%; */
+  position: absolute;
+  padding-left:1150px;
+
+}
+
+.con {
+  margin: 20px;
+}
+
+.fb {
+  margin: 0px 20px;
+  color: blue;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+
+
+}
+
+.fb:hover {
+  color: red;
+
+}
+
+.in {
+  margin: 0px 20px;
+  color: orangered;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+
+
+}
+
+.in:hover {
+  color: rgb(36, 4, 67);
+
+}
+
+.li {
+  margin: 0px 20px;
+  color: rgb(41, 66, 156);
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+
+
+}
+
+.li:hover {
+  color: rgb(121, 141, 9);
+
+}
+
+
+.gi {
+  margin: 0px 20px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+
+
+}
+
+.gi:hover {
+  color: skyblue;
+}
+
+.foot {
+  margin: 20px;
+  border: 0px solid rgb(54, 53, 53);
+  display: flex;
+  height: 50vh;
+  background: rgba(247, 246, 244, 0.331);
+  border-radius: 5px;
+}
+
+img.tu {
+  height: 25vh;
+  margin: 20px 180px;
+  /* background:rgba(214, 212, 205, 0.331); */
+  color: rgba(214, 212, 205, 0.331);
+}
+
+.text {
+  margin: 5px 160px;
+}
+
+.sec {
+  margin: 5px 160px;
+}
+
+.thi {
+  margin: 5px 160px;
+}
+
+.fo {
+  margin: 5px 160px;
+}
+
+.le {
+  width: 70%;
+}
+
+.ri {
+  /* text-align: center;
+  justify-content: center;  */
+  margin: 30px;
+}
+
+.des {
+  margin: 50px 10px;
+  font-family: sans-serif;
+  font-size: 15px;
+  /* text-align: left;
+  justify-content: left; */
+
+}
+
+.con {
+  margin: 30px 40px;
+  font-family: sans-serif;
+  font-size: 15px;
+
+}
+
+.fb {
+  margin: 0px 15px;
+  color: blue;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+
+
+}
+
+.fb:hover {
+  color: red;
+
+}
+
+.in {
+  margin: 0px 15px;
+  color: orangered;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+
+
+}
+
+.in:hover {
+  color: rgb(36, 4, 67);
+
+}
+
+.li {
+  margin: 0px 15px;
+  color: rgb(41, 66, 156);
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+
+
+}
+
+.li:hover {
+  color: rgb(121, 141, 9);
+
+}
+
+
+.gi {
+  margin: 0px 15px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+
+
+}
+
+.gi:hover {
+  color: skyblue;
+
+}
+
+.fi {
+  margin: 0px 15px;
+
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+
+
+}
+
+.fi:hover {
+  color: palevioletred;
+
+}
